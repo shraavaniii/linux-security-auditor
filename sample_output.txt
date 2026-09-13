@@ -1,0 +1,129 @@
+===================================
+    LINUX SECURITY AUDITOR         
+===================================
+
+[1] System Information
+----------------------------------------
+Hostname      : SOC-Splunk
+OS            : Ubuntu 26.04 LTS
+Kernel        : 7.0.0-30-generic
+Architecture  : x86_64
+Virtualization: oracle
+
+[2] Firewall Status
+----------------------------------------
+[WARN] NET-001 | UFW firewall is inactive
+       Recommendation: Enable and configure the UFW firewall.
+
+[3] SSH Server Check
+----------------------------------------
+[INFO] NET-002 | SSH server is not installed
+
+[4] User Account Check
+----------------------------------------
+[PASS] AUTH-001 | Only root has UID 0
+
+[INFO] NORMAL USER ACCOUNTS:
+vboxuser 1000 /bin/bash
+splunk 1001 /bin/bash
+
+[5] Password Status Check
+----------------------------------------
+[INFO] AUTH-002 | vboxuser has an active password configured
+[PASS] AUTH-002 | splunk password login is locked / disabled
+
+[6] Sudo Privilege Check
+----------------------------------------
+[INFO] AUTH-003 | Users with sudo privileges: 
+vboxuser
+
+[7] File Permissions Check
+----------------------------------------
+[PASS] FILE-001 | No world-writable files detected
+
+[8] SUID File Check
+----------------------------------------
+[INFO] FILE-002 | 16 SUID files detected
+
+[9] Network Port Check
+----------------------------------------
+[INFO] NET-003 | Network-facing ports detected: 
+udp   UNCONN 0      0            0.0.0.0:5353      0.0.0.0:*    users:(("avahi-daemon",pid=1030,fd=12))  
+udp   UNCONN 0      0               [::]:5353         [::]:*    users:(("avahi-daemon",pid=1030,fd=13))  
+
+[10] System Updates Check
+----------------------------------------
+[WARN] SYS-002 | 138 package updates are available
+       Recommendation: Review and install available system updates.
+[INFO] Run 'sudo apt upgrade' to install updates
+
+[11] Cron Job Check
+----------------------------------------
+[PASS] PERSIST-001 | No root user cron jobs configured
+[INFO] System cron entries detected: 
+/etc/cron.d
+/etc/cron.d/e2scrub_all
+/etc/cron.d/.placeholder
+/etc/cron.d/anacron
+/etc/cron.daily
+/etc/cron.daily/man-db
+/etc/cron.daily/apt-compat
+/etc/cron.daily/0anacron
+/etc/cron.daily/logrotate
+/etc/cron.daily/.placeholder
+/etc/cron.daily/dpkg
+/etc/cron.daily/apport
+/etc/cron.hourly
+/etc/cron.hourly/.placeholder
+
+[12] Failed Authentication Check
+----------------------------------------
+Total Failures: 2
+Recent Failures: 
+1. Time: 2026-08-25T11:45:09.014160+00:00  | User: user=vboxuser
+2. Time: 2026-09-11T14:46:33.898389+00:00  | User: user=vboxuser
+
+[WARN] AUTH-004 | Authentication failures detected
+       Recommendation: Review authentication logs and investigate repeated failures.
+
+[13] System Error Check
+----------------------------------------
+Errors detected: 1
+[WARN] SYS-003 | System errors detected
+       Recommendation: Review recent system errors and investigate recurring failures.
+
+[14] Password Aging Check
+----------------------------------------
+[WARN] AUTH-005 | vboxuser password never expires
+       Recommendation: Configure an appropriate password expiration policy.
+[WARN] AUTH-005 | splunk password never expires
+       Recommendation: Configure an appropriate password expiration policy.
+
+[15] World-Writable Directory Check
+----------------------------------------
+[INFO] FILE-003 | 13 world-writable directories detected
+Review these directories to identify unexpected writable locations: 
+/tmp
+/var/metrics
+/var/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-switcheroo-control.service-ZwmvIQ/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-upower.service-NAcSWr/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-chrony.service-ikOWIb/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-systemd-logind.service-6PnXsD/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-colord.service-PZMiSd/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-ModemManager.service-II9C01/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-power-profiles-daemon.service-Jw733k/tmp
+/var/tmp/systemd-private-2e405a6212fe4d258c0870908d4db00f-polkit.service-WaNoJ5/tmp
+/var/crash
+/var/lib/BrlAPI
+
+===================================
+          AUDIT SUMMARY
+===================================
+PASS     : 4
+INFO     : 6
+WARN     : 6
+CRITICAL : 0
+
+Risk Score : 36/100
+Risk Level : MEDIUM
