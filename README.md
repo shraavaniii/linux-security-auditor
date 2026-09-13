@@ -81,35 +81,51 @@ The risk score is a project-specific heuristic and is intended for security asse
 linux-security-auditor/
 ├── audit.sh
 ├── generate_report.py
-├── sample_output.txt
 ├── README.md
+├── sample_output.txt
 └── .gitignore
 ```
 
 ## Requirements
-Linux operating system
-Bash
-Python 3
-sudo privileges for system-level checks
+
+- Linux operating system
+- Bash
+- Python 3
+- sudo privileges for system-level checks
 
 ## Usage
 
 Make the auditor executable:
+
+```bash
 chmod +x audit.sh
+```
 
 Run the auditor:
+
+```bash
 ./audit.sh
+```
 
 Generate the JSON report:
-python3 generate_report.py
 
-The generated report will be saved as:
+```bash
+python3 generate_report.py
+```
+
+The generated report will be saved locally as:
+
+```text
 audit_report.json
+```
+
+The JSON report is excluded from version control using `.gitignore`.
 
 ## Example Result
 
 Example audit summary:
 
+```text
 ===================================
           AUDIT SUMMARY
 ===================================
@@ -120,32 +136,47 @@ CRITICAL : 0
 
 Risk Score : 36/100
 Risk Level : MEDIUM
+```
+## Screenshots
+
+### Security Audit Output
+
+![Linux Security Auditor - System and Access Checks](screenshots/screenshot-1.jpeg)
+
+![Linux Security Auditor - Network and Update Checks](screenshots/screenshot-2.jpeg)
+
+![Linux Security Auditor - Authentication Checks](screenshots/screenshot-3.jpeg)
+
+![Linux Security Auditor - Filesystem Checks](screenshots/screenshot-4.jpeg)
+
+![Linux Security Auditor - Audit Summary](screenshots/screenshot-5.jpeg)
 
 ## Technologies Used
-Bash
-Python
-Linux
-Ubuntu
-Linux command-line utilities
-File permissions
-Linux authentication and user management
-Network inspection
+
+- Bash
+- Python
+- Linux
+- Ubuntu
+- Linux command-line utilities
+- File permissions
+- Linux authentication and user management
+- Network inspection
 
 ## Learning Outcomes
 
 This project provided practical experience with:
-Linux security auditing
-Bash scripting
-Linux file permissions
-User and privilege management
-Authentication monitoring
-Network exposure analysis
-System hardening concepts
-Security finding classification
-Basic risk scoring
-JSON report generation
+
+- Linux security auditing
+- Bash scripting
+- Linux file permissions
+- User and privilege management
+- Authentication monitoring
+- Network exposure analysis
+- System hardening concepts
+- Security finding classification
+- Basic risk scoring
+- JSON report generation
 
 ## Disclaimer
 
 This tool is intended for authorized security auditing, learning, and system administration purposes. Run it only on systems you own or have permission to assess.
-
