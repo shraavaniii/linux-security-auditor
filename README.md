@@ -81,8 +81,10 @@ The risk score is a project-specific heuristic and is intended for security asse
 linux-security-auditor/
 ├── audit.sh
 ├── generate_report.py
-├── audit_report.json
-└── README.md```
+├── sample_output.txt
+├── README.md
+└── .gitignore
+```
 
 ## Requirements
 Linux operating system
